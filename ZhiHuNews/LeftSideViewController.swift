@@ -10,10 +10,11 @@ import UIKit
 
 class LeftSideViewController: UIViewController, UITableViewDataSource,UITableViewDelegate{
 
-    var menuItmes:[String] = ["Main","About"]
+    var menuItmes:[String] = ["首页","日常心理学","电影日报","不许无聊","设计日报","大公司日报","财经日报","互联网安全","开始游戏","音乐日报","动漫日报","体育日报"]
     var centerNavController = UINavigationController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.blackColor()
 
         // Do any additional setup after loading the view.
     }
