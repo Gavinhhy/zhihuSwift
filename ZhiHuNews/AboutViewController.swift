@@ -10,10 +10,15 @@ import UIKit
 
 class AboutViewController: UIViewController {
 
+    @IBAction func menuTapped(sender: AnyObject) {
+        var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = "About"
     }
 
     override func didReceiveMemoryWarning() {

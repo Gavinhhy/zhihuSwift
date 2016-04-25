@@ -10,6 +10,7 @@ import UIKit
 
 class MyCustomTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var menuItemLable: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

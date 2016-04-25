@@ -1,0 +1,6 @@
+framework module Pods_ZhiHuNews {
+  umbrella header "Pods-ZhiHuNews-umbrella.h"
+
+  export *
+  module * { export * }
+}
