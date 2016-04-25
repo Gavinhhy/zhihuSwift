@@ -11,10 +11,10 @@
 		86011BC11CCA18F600357622 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86011BBA1CCA18F600357622 /* MMDrawerController.m */; };
 		86011BC21CCA18F600357622 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 86011BBD1CCA18F600357622 /* MMDrawerVisualState.m */; };
 		86011BC31CCA18F600357622 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86011BBF1CCA18F600357622 /* UIViewController+MMDrawerController.m */; };
-		86011BC61CCA254B00357622 /* IMG_0046.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 86011BC51CCA254B00357622 /* IMG_0046.JPG */; };
 		86011BC81CCA262700357622 /* MyCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86011BC71CCA262700357622 /* MyCustomTableViewCell.swift */; };
 		860E18641CC9C3BE00230782 /* LeftSideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E18631CC9C3BE00230782 /* LeftSideViewController.swift */; };
 		863A7C081CCDC0910029518B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863A7C071CCDC0910029518B /* AboutViewController.swift */; };
+		863A7C101CCE28CA0029518B /* text.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 863A7C0F1CCE28CA0029518B /* text.jpg */; };
 		8643956A1CC8B1D100550F29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864395691CC8B1D100550F29 /* AppDelegate.swift */; };
 		8643956C1CC8B1D100550F29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643956B1CC8B1D100550F29 /* ViewController.swift */; };
 		8643956F1CC8B1D100550F29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8643956D1CC8B1D100550F29 /* Main.storyboard */; };
@@ -36,10 +36,10 @@
 		86011BBD1CCA18F600357622 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
 		86011BBE1CCA18F600357622 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
 		86011BBF1CCA18F600357622 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
-		86011BC51CCA254B00357622 /* IMG_0046.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0046.JPG; sourceTree = "<group>"; };
 		86011BC71CCA262700357622 /* MyCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomTableViewCell.swift; sourceTree = "<group>"; };
 		860E18631CC9C3BE00230782 /* LeftSideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftSideViewController.swift; sourceTree = "<group>"; };
 		863A7C071CCDC0910029518B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		863A7C0F1CCE28CA0029518B /* text.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = text.jpg; sourceTree = "<group>"; };
 		864395661CC8B1D100550F29 /* ZhiHuNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhiHuNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		864395691CC8B1D100550F29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8643956B1CC8B1D100550F29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +82,7 @@
 				86011BBA1CCA18F600357622 /* MMDrawerController.m */,
 				86011BBB1CCA18F600357622 /* MMDrawerController+Subclass.h */,
 				86011BBC1CCA18F600357622 /* MMDrawerVisualState.h */,
+				863A7C0F1CCE28CA0029518B /* text.jpg */,
 				86011BBD1CCA18F600357622 /* MMDrawerVisualState.m */,
 				86011BBE1CCA18F600357622 /* UIViewController+MMDrawerController.h */,
 				86011BBF1CCA18F600357622 /* UIViewController+MMDrawerController.m */,
@@ -93,7 +94,6 @@
 		86011BC41CCA253C00357622 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				86011BC51CCA254B00357622 /* IMG_0046.JPG */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -204,8 +204,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				863A7C101CCE28CA0029518B /* text.jpg in Resources */,
 				864395771CC8B1D100550F29 /* LaunchScreen.storyboard in Resources */,
-				86011BC61CCA254B00357622 /* IMG_0046.JPG in Resources */,
 				864395741CC8B1D100550F29 /* Assets.xcassets in Resources */,
 				8643956F1CC8B1D100550F29 /* Main.storyboard in Resources */,
 			);
