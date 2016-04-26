@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Haneke
+import Alamofire
 
 // 顶部图片的高度
 private let topImageHeight: CGFloat = 200
@@ -24,6 +26,7 @@ private var customTitleLabel: UILabel?
 private var viewTitleLabel: UILabel?
 
 class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
+    var dataArray:NSArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         tableView.contentInset = UIEdgeInsetsMake(topImageHeight, 0, 0, 0)
         tableView.addSubview(topImage)
         
+        tableView.registerNib(UINib(nibName: "CommonTableViewCell", bundle: nil), forCellReuseIdentifier: "myCell")
+        
         // 自定义导航栏
         let backView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 64))
         view.addSubview(backView)
@@ -64,6 +69,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         view.addSubview(btn)
         viewBackBtn = btn
         
+        
         // 自定义标题
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 44))
         titleLabel.textAlignment = .Center
@@ -81,20 +87,63 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         viewTitleLabe.textColor = UIColor.blackColor()
         viewTitleLabel = viewTitleLabe
         view?.addSubview(titleLabel)
+        
+        //以下部分是使用alamofire来请求远程并且处理json数据，及其简单
+        Alamofire.request(.GET,"http://news-at.zhihu.com/api/4/news/latest")
+            .responseJSON(completionHandler: { response in
+                switch response.result {
+                //请求成功时候
+                case .Success(let json):
+                    let response = json as! NSDictionary
+                    self.dataArray = response.objectForKey("stories") as! NSArray
+                    
+                    //添加到主线程
+                    dispatch_async(dispatch_get_main_queue(), {
+                        tableView.reloadData()
+                        return
+                    })
+                //请求失败时候
+                case .Failure(let error):
+                    print("error:\(error)")
+                }
+                
+            })
     }
-    
+    //返回section个数
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    //返回行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return self.dataArray.count
+    }
+    //返回cell的高度
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellID = "cellID"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellID)
-        if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellID)
+        let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! CommonTableViewCell
+        if self.dataArray.count != 0{
+            let item = self.dataArray[indexPath.row] as! NSDictionary
+            cell.storyTitle.text = item.objectForKey("title") as? String
+            let urlString = item.objectForKey("images") as? NSArray
+            print(urlString![0])
+            let urlStr = urlString![0] as? String
+           let url = NSURL(string: urlStr!)
+           cell.storyImg.hnk_setImageFromURL(url!)
+        }else{
+            print("还没取到数据－－\(indexPath.row)")
         }
-        cell!.textLabel!.text = "cell\(indexPath.row)"
-        return cell!
+        return cell
+//        let cellID = "cellID"
+//        var cell = tableView.dequeueReusableCellWithIdentifier(cellID)
+//        if cell == nil {
+//            cell = UITableViewCell(style: .Default, reuseIdentifier: cellID)
+//        }
+//        cell!.textLabel!.text = "cell\(indexPath.row)"
+//        return cell!
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -125,11 +174,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func menuClicked(sender:UIButton){
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
 
     //给主页的左上角的菜单键加上点击事件
-    @IBAction func menuTapped(sender: AnyObject) {
-        var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    func menuTapped(sender: AnyObject) {
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.centerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
 
