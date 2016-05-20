@@ -9,7 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DriftAnimationImageView-DriftAnimationImageView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DriftAnimationImageView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HanekeSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSAnimatedImagesView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MSWeakTimer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +42,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>331FF19A443249567A29E31954B92E2C</key>
+		<key>21AF02A18277C1BF032A6BE537AD773E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2AE5607D92F4FECAA0812BE3C5146C92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B3C7E043402AE31E32F07A28778BD32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5689DBC1D9E1890F3636819BE949D0EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5C30BFF53E4DD37341956FF6E18934A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

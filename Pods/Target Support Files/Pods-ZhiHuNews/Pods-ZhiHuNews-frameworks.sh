@@ -85,9 +85,15 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ZhiHuNews/Alamofire.framework"
+  install_framework "Pods-ZhiHuNews/DriftAnimationImageView.framework"
   install_framework "Pods-ZhiHuNews/Haneke.framework"
+  install_framework "Pods-ZhiHuNews/JSAnimatedImagesView.framework"
+  install_framework "Pods-ZhiHuNews/MSWeakTimer.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ZhiHuNews/Alamofire.framework"
+  install_framework "Pods-ZhiHuNews/DriftAnimationImageView.framework"
   install_framework "Pods-ZhiHuNews/Haneke.framework"
+  install_framework "Pods-ZhiHuNews/JSAnimatedImagesView.framework"
+  install_framework "Pods-ZhiHuNews/MSWeakTimer.framework"
 fi

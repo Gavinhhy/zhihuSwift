@@ -27,6 +27,10 @@ private var viewTitleLabel: UILabel?
 
 class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     var dataArray:NSArray = []
+    var idList : [String] = []
+    var  tableView  = UITableView()
+    let cache = Shared.JSONCache
+    var URL = NSURL(string: "http://news-at.zhihu.com/api/4/news/latest")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +45,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         topImag = topImage
         
         // tableView
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        tableView  = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         tableView.delegate = self
         tableView.dataSource = self;
         view.addSubview(tableView)
@@ -88,26 +92,41 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         viewTitleLabel = viewTitleLabe
         view?.addSubview(titleLabel)
         
+        
+        
         //以下部分是使用alamofire来请求远程并且处理json数据，及其简单
-        Alamofire.request(.GET,"http://news-at.zhihu.com/api/4/news/latest")
-            .responseJSON(completionHandler: { response in
-                switch response.result {
-                //请求成功时候
-                case .Success(let json):
-                    let response = json as! NSDictionary
-                    self.dataArray = response.objectForKey("stories") as! NSArray
+//        Alamofire.request(.GET,"http://news-at.zhihu.com/api/4/news/latest")
+//            .responseJSON(completionHandler: { response in
+//                switch response.result {
+//                //请求成功时候
+//                case .Success(let json):
+//                    let response = json as! NSDictionary
+//                    self.dataArray = response.objectForKey("stories") as! NSArray
+        
+        
+                    cache.fetch(URL: URL).onSuccess { JSON in
+                        self.dataArray = JSON.dictionary?["stories"] as! NSArray
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                            return
+                        })
+                    }
+                        .onFailure { error in
+                            print("出现错误\(error)")
+                    }
                     
-                    //添加到主线程
-                    dispatch_async(dispatch_get_main_queue(), {
-                        tableView.reloadData()
-                        return
-                    })
-                //请求失败时候
-                case .Failure(let error):
-                    print("error:\(error)")
-                }
-                
-            })
+//                    //添加到主线程
+//                    dispatch_async(dispatch_get_main_queue(), {
+//                        tableView.reloadData()
+//                        return
+//                    })
+//                //请求失败时候
+//                case .Failure(let error):
+//                    print("error:\(error)")
+//                }
+//                
+//            })
     }
     //返回section个数
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -129,26 +148,47 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             let item = self.dataArray[indexPath.row] as! NSDictionary
             cell.storyTitle.text = item.objectForKey("title") as? String
             let urlString = item.objectForKey("images") as? NSArray
-            print(urlString![0])
             let urlStr = urlString![0] as? String
            let url = NSURL(string: urlStr!)
            cell.storyImg.hnk_setImageFromURL(url!)
+            //获取对应的id
+            let idString = item.objectForKey("id")
+            self.idList.append("\(idString!)")
         }else{
             print("还没取到数据－－\(indexPath.row)")
         }
         return cell
-//        let cellID = "cellID"
-//        var cell = tableView.dequeueReusableCellWithIdentifier(cellID)
-//        if cell == nil {
-//            cell = UITableViewCell(style: .Default, reuseIdentifier: cellID)
-//        }
-//        cell!.textLabel!.text = "cell\(indexPath.row)"
-//        return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let newId = self.idList[indexPath.row]
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let urlString = "http://news-at.zhihu.com/api/4/news/" + newId
+        print("要穿过去的网址")
+        print(urlString)
+        self.performSegueWithIdentifier("show_detail", sender: urlString)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
         let offY = scrollView.contentOffset.y
+        if offY < -300 {
+            print("开始刷新－－")
+            cache.remove(key: "http://news-at.zhihu.com/api/4/news/latest")
+//            URL = NSURL(string: "http://news.at.zhihu.com/api/4/news/before/20160520")!
+            cache.fetch(URL: URL).onSuccess({ JSON in
+                self.dataArray = JSON.dictionary?["stories"] as! NSArray
+                print(self.dataArray)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                    return
+                })
+            })
+            .onFailure({error in
+                print("网络出错")
+            })
+        }
+        
         // 根据偏移量改变alpha的值
         customNavc?.alpha = (offY + 64) / (topImageHeight - 64) + 1
         // 设置图片的高度 和 Y 值
@@ -166,6 +206,13 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             customBackBtn?.setImage(UIImage(named: "menu_white"), forState: .Normal)
             viewBackBtn?.hidden = false
             customTitleLabel?.textColor = UIColor.whiteColor()
+        }
+    }
+    //在这个方法中给新页面传递参数
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "show_detail"{
+            let controller = segue.destinationViewController as! DetailViewController
+            controller.urlString = sender as! String
         }
     }
     

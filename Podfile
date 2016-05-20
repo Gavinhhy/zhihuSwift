@@ -6,6 +6,8 @@ use_frameworks!
 target 'ZhiHuNews' do
     pod 'HanekeSwift'
     pod 'Alamofire'
+    pod 'JSAnimatedImagesView'
+    pod "DriftAnimationImageView"
 
 end
 

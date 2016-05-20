@@ -21,6 +21,8 @@
 		864395721CC8B1D100550F29 /* ZhiHuNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 864395701CC8B1D100550F29 /* ZhiHuNews.xcdatamodeld */; };
 		864395741CC8B1D100550F29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 864395731CC8B1D100550F29 /* Assets.xcassets */; };
 		864395771CC8B1D100550F29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864395751CC8B1D100550F29 /* LaunchScreen.storyboard */; };
+		867055551CD9AD5B00219E60 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867055541CD9AD5B00219E60 /* LaunchViewController.swift */; };
+		8692BE081CD8980A00B4CB1A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692BE071CD8980A00B4CB1A /* DetailViewController.swift */; };
 		86CF3B521CCF0D0F003F997C /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF3B501CCF0D0F003F997C /* CommonTableViewCell.swift */; };
 		86CF3B531CCF0D0F003F997C /* CommonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CF3B511CCF0D0F003F997C /* CommonTableViewCell.xib */; };
 		B1563F641B301A4FE9EBF1BD /* Pods_ZhiHuNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ACA24F17893B7B4319F9C5 /* Pods_ZhiHuNews.framework */; };
@@ -50,6 +52,8 @@
 		864395731CC8B1D100550F29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		864395761CC8B1D100550F29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		864395781CC8B1D100550F29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		867055541CD9AD5B00219E60 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		8692BE071CD8980A00B4CB1A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		86CF3B501CCF0D0F003F997C /* CommonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTableViewCell.swift; sourceTree = "<group>"; };
 		86CF3B511CCF0D0F003F997C /* CommonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonTableViewCell.xib; sourceTree = "<group>"; };
 		B31358AE8D2226013836EE7F /* Pods-ZhiHuNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhiHuNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZhiHuNews/Pods-ZhiHuNews.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				864395691CC8B1D100550F29 /* AppDelegate.swift */,
 				8643956B1CC8B1D100550F29 /* ViewController.swift */,
 				8643956D1CC8B1D100550F29 /* Main.storyboard */,
+				867055541CD9AD5B00219E60 /* LaunchViewController.swift */,
+				8692BE071CD8980A00B4CB1A /* DetailViewController.swift */,
 				864395731CC8B1D100550F29 /* Assets.xcassets */,
 				864395751CC8B1D100550F29 /* LaunchScreen.storyboard */,
 				864395781CC8B1D100550F29 /* Info.plist */,
@@ -273,9 +279,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867055551CD9AD5B00219E60 /* LaunchViewController.swift in Sources */,
 				8643956C1CC8B1D100550F29 /* ViewController.swift in Sources */,
 				8643956A1CC8B1D100550F29 /* AppDelegate.swift in Sources */,
 				86011BC01CCA18F600357622 /* MMDrawerBarButtonItem.m in Sources */,
+				8692BE081CD8980A00B4CB1A /* DetailViewController.swift in Sources */,
 				86011BC31CCA18F600357622 /* UIViewController+MMDrawerController.m in Sources */,
 				860E18641CC9C3BE00230782 /* LeftSideViewController.swift in Sources */,
 				86011BC81CCA262700357622 /* MyCustomTableViewCell.swift in Sources */,
